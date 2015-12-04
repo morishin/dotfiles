@@ -1,0 +1,21 @@
+[user]
+  name = Shintaro Morikawa
+  email = sntr92@gmail.com
+[color]
+  ui = auto
+[alias]
+  graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
+  st = status
+  cm = commit
+  co = checkout
+  restore = !git st | grep 'deleted:' | sed -e 's/.*deleted: */git checkout HEAD -- /' | sh
+  delete = "!$SHELL -c 'state=0; git st | while read line; do if [ \"$line\" = \"Untracked files:\" ]; then state=1; continue; fi; if [ $state -eq 1 ] && [ -z $line ]; then state=2; continue; fi; if [ $state -eq 2 ]; then if [ ! -z $line ]; then echo $line; continue; else break; fi; fi; done | xargs rm -rv | sed -e \"s/$/ deleted./\"' __dummy__"
+[core]
+  editor = vim
+  quotepath = false
+  excludesfile = $HOME/.gitignore
+  whitespace = trailing-space
+  autocrlf = input
+[merge "mergepbx"]
+  name = Xcode project files merger
+  driver = mergepbx %O %A %B
