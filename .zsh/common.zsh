@@ -67,7 +67,11 @@ PROMPT2="%_%% "
 SPROMPT="%r is correct? [No,Yes,Abort,Exit]: "
 
 # autojump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+if [ $(uname -s) = Darwin ]; then
+  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+else
+  . /usr/share/autojump/autojump.sh
+fi
 
 # tmux
 which tmux 2>&1 >/dev/null && [ -z $TMUX ] && (tmux -2 attach || tmux -2 new-session)
