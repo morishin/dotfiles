@@ -110,3 +110,38 @@ genymotion_peco(){
 function mspec() {
   find **/spec -name "*$1*_spec.rb" | xargs bundle exec rspec
 }
+
+# github
+function github-url() {
+	ruby <<-EOS
+		require 'uri'
+		def parse_remote(remote_origin)
+		  if remote_origin =~ /^https:\/\//
+		    uri = URI.parse(remote_origin)
+		    [uri.host, uri.path]
+		  elsif remote_origin =~ /^[^:\/]+:\/?[^:\/]+\/[^:\/]+$/
+		    host, path = remote_origin.split(":")
+		    [host.split("@").last, path]
+		  else
+		    raise "Not supported origin url: #{remote_origin}"
+		  end
+		end
+		host, path = parse_remote(\`git config remote.origin.url\`.strip)
+                puts "https://#{host}/#{path.gsub(/\.git$/, '')}"
+	EOS
+}
+
+function preq() {
+  # git rev-list --ancestry-path : only display commits that exist directly on the ancestry chain
+  # git rev-list --first-parent  : follow only the first parent commit upon seeing a merge commit
+  merge_commit=$(ruby -e 'print (File.readlines(ARGV[0]) & File.readlines(ARGV[1])).last' <(git rev-list --ancestry-path $1..master) <(git rev-list --first-parent $1..master))
+
+  if git show $merge_commit | grep -q 'pull request'; then
+    issue_number=$(git show $merge_commit | grep 'pull request' | ruby -ne 'puts $_.match(/#(\d+)/)[1]')
+    url="$(github-url)/pull/${issue_number}"
+  else
+    url="$(github-url)/commit/${1}"
+  fi
+
+  open $url
+}
