@@ -16,6 +16,10 @@
   excludesfile = $HOME/.gitignore
   whitespace = trailing-space
   autocrlf = input
+[pager]
+  log = diff-highlight | less -M
+  show = diff-highlight | less -M
+  diff = diff-highlight | less -M
 [merge "mergepbx"]
   name = Xcode project files merger
   driver = mergepbx %O %A %B

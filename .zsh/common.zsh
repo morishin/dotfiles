@@ -80,6 +80,9 @@ tmux rename-window ${PWD##*/}
 # rbenv
 eval "$(rbenv init - )"
 
+# pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
 # bugfix compdef
 # https://github.com/robbyrussell/oh-my-zsh/blob/4589bc6c654650d52a47b5cb86c588f4ab2aca46/lib/compfix.zsh
 # Handle completions insecurities (i.e., completion-dependent directories with

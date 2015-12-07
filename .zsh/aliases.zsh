@@ -28,6 +28,31 @@ alias __git-checkout_main=_git_checkout
 alias gs='git status'
 alias gpl='git pull'
 alias gps='git push'
+alias gcl='git clone'
+alias ggrep='git grep'
+# extract
+function _extract() {
+  case $1 in
+    *tar.bz|*.tar.bz2|*.tbz) tar xjvf $1;;
+    *.tar.gz|*.tgz) tar xzvf $1;;
+    *.tar.xz) tar xJvf $1;;
+    *.tar.Z|*.taz) tar xzvf $1;;
+    *.arj) unarj $1;;
+    *.bz2) bzip2 -dc $1;;
+    *.gz) gzip -dc $1;;
+    *.lzh) lha e $1;;
+    *.rar) unrar x $1;;
+    *.tar) tar xvf $1;;
+    *.xz) xz -dv $1;;
+    *.Z) uncompress $1;;
+    *.zip) unzip $1;;
+    *.7z) 7z x $1 -oextracted;;
+  esac
+}
+alias -s {arz,bz2,gz,lzh,rar,tar,tbz,tgz,xz,Z,zip,7z}=_extract
+# others
+alias amesh='curl -L 'https://ame.cnosuke.com/current' 2> /dev/null | imgcat'
+alias podi='bundle exec pod install; terminal-notifier -message "Done \`pod install\`"'
 # os specific
 case "${OSTYPE}" in
 darwin*)

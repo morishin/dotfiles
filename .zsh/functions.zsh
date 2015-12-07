@@ -106,3 +106,7 @@ genymotion_peco(){
      $player --vm-name "$name" &
   fi
 }
+
+function mspec() {
+  find **/spec -name "*$1*_spec.rb" | xargs bundle exec rspec
+}
