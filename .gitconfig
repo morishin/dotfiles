@@ -1,6 +1,5 @@
-[user]
-  name = Shintaro Morikawa
-  email = sntr92@gmail.com
+[include]
+  path = .git-config/.gitconfig.user
 [color]
   ui = auto
 [alias]
