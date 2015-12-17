@@ -43,28 +43,44 @@ zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "$HOME/.zcache"
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
 # prompt
 function precmd() {
-PROMPT="${VIMODE}%{${fg[green]}%}%n%{${fg[yellow]}%} %~%{${reset_color}%}"
-st=`git status 2>/dev/null`
-if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-  color=${fg[cyan]}
-elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-  color=${fg[blue]}
-elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-  color=${fg_bold[red]}
-else
-  color=${fg[red]}
-fi
-PROMPT+=" %{$color%}$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /')%b%{${reset_color}%}"
-
-if [ -n "$VIRTUAL_ENV" ]; then
-  PROMPT="(`basename \"$VIRTUAL_ENV\"`)$PROMPT"
-fi
+  errorhook
+  setprompt
 }
 
+function setprompt() {
+  PROMPT="${VIMODE}%{${fg[green]}%}%n%{${fg[yellow]}%} %~%{${reset_color}%}"
+  st=`git status 2>/dev/null`
+  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+    color=${fg[cyan]}
+  elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
+    color=${fg[blue]}
+  elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
+    color=${fg_bold[red]}
+  else
+    color=${fg[red]}
+  fi
+  PROMPT+=" %{$color%}$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /')%b%{${reset_color}%}"
+  
+  if [ -n "$VIRTUAL_ENV" ]; then
+    PROMPT="(`basename \"$VIRTUAL_ENV\"`)$PROMPT"
+  fi
+}
 PROMPT2="%_%% "
 SPROMPT="%r is correct? [No,Yes,Abort,Exit]: "
+
+function errorhook() {
+  if [ $? -ne 0 ];then
+    tohaie
+  fi
+}
+
+function tohaie() {
+  #https://twitter.com/toto_pa/status/653915934034235392
+  echo "\n${fg[red]}とはいえ、人はいずれ死ぬ${reset_color}"
+}
 
 # autojump
 if [ $(uname -s) = Darwin ]; then
