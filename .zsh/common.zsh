@@ -79,7 +79,7 @@ function errorhook() {
 
 function tohaie() {
   #https://twitter.com/toto_pa/status/653915934034235392
-  echo "\n${fg[red]}とはいえ、人はいずれ死ぬ${reset_color}"
+  #echo "\n${fg[red]}とはいえ、人はいずれ死ぬ${reset_color}"
 }
 
 # autojump
@@ -98,6 +98,9 @@ eval "$(rbenv init - )"
 
 # pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+# docker toolbox
+eval "$(docker-machine env default)"
 
 # bugfix compdef
 # https://github.com/robbyrussell/oh-my-zsh/blob/4589bc6c654650d52a47b5cb86c588f4ab2aca46/lib/compfix.zsh
