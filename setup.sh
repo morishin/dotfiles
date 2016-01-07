@@ -9,6 +9,9 @@ do
   ln -sni $(pwd)/$file $HOME/$(basename $file)
 done
 
+echo "sudo permission is necessary to symlink IDETextKeyBindingSet.plist"
+sudo ln -sni $(pwd)/IDETextKeyBindingSet.plist $(xcode-select -print-path)/../Frameworks/IDEKit.framework/Versions/A/Resources/
+
 if [ ! -e $HOME/.vim/bundle/neobundle.vim ]; then
   git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
 fi
