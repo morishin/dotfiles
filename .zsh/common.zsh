@@ -32,6 +32,8 @@ setopt no_hup
 setopt no_checkjobs
 setopt notify
 
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 bindkey -e
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -100,7 +102,7 @@ eval "$(rbenv init - )"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # docker toolbox
-eval "$(docker-machine env default)"
+# eval "$(docker-machine env default)"
 
 # bugfix compdef
 # https://github.com/robbyrussell/oh-my-zsh/blob/4589bc6c654650d52a47b5cb86c588f4ab2aca46/lib/compfix.zsh

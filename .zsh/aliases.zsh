@@ -30,6 +30,10 @@ alias gpl='git pull'
 alias gps='git push'
 alias gcl='git clone'
 alias ggrep='git grep'
+# haskell
+alias ghc='stack ghc'
+alias ghci='stack ghci'
+alias runghc='stack runghc'
 # extract
 function _extract() {
   case $1 in
