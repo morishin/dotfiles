@@ -32,7 +32,7 @@ setopt no_hup
 setopt no_checkjobs
 setopt notify
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 bindkey -e
 

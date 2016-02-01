@@ -8,6 +8,7 @@ alias mv='mv -i'
 alias du='du -h'
 # mysql
 alias mysql='mysql --pager="less -SiFX"'
+alias psql='PAGER="less -SiFX" psql'
 # python
 alias py='python'
 alias py2='python2'
