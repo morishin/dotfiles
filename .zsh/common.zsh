@@ -53,7 +53,7 @@ function precmd() {
 }
 
 function setprompt() {
-  PROMPT="${VIMODE}%{${fg[green]}%}%n%{${fg[yellow]}%} %~%{${reset_color}%}"
+  PROMPT="%{${fg[green]}%}%n%{${fg[yellow]}%} %~%{${reset_color}%}"
   st=`git status 2>/dev/null`
   if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
     color=${fg[cyan]}
@@ -65,7 +65,7 @@ function setprompt() {
     color=${fg[red]}
   fi
   PROMPT+=" %{$color%}$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /')%b%{${reset_color}%}"
-  
+
   if [ -n "$VIRTUAL_ENV" ]; then
     PROMPT="(`basename \"$VIRTUAL_ENV\"`)$PROMPT"
   fi
