@@ -35,6 +35,7 @@ alias ggrep='git grep'
 alias ghc='stack ghc'
 alias ghci='stack ghci'
 alias runghc='stack runghc'
+alias runhaskell='stack runghc'
 # extract
 function _extract() {
   case $1 in
