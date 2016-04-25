@@ -46,6 +46,8 @@ zstyle ':completion::complete:*' cache-path "$HOME/.zcache"
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
+source /opt/brew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # prompt
 function precmd() {
   errorhook
@@ -96,10 +98,21 @@ which tmux 2>&1 >/dev/null && [ -z $TMUX ] && (tmux -2 attach || tmux -2 new-ses
 tmux rename-window ${PWD##*/}
 
 # rbenv
-eval "$(rbenv init - )"
+if which rbenv > /dev/null; then eval "$(rbenv init - )"; fi
 
 # pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+# git-hooks
+function replace-githooks() {
+  if [ -e .git/hooks ]; then
+    rm -rf .git/hooks
+    ln -s ~/.git-template/hooks .git/hooks
+  fi
+}
 
 # docker toolbox
 # eval "$(docker-machine env default)"
