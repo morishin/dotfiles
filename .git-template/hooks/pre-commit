@@ -4,7 +4,7 @@ black_words = [
   'puts',
   'p',
   'binding.pry',
-  'return true',
+  # 'return true',
 ]
 
 found_words = []
@@ -22,5 +22,10 @@ end
 unless found_words.empty?
   found_words.each { |word| puts "WARNING: '#{word}' is found." }
   puts "Please add `--no-verify` option if you want to commit with no change."
+  exit 1
+end
+
+unless system("git config --local user.email")
+  puts "Please run `git config --local user.email <YOUR_EMAIL_ADDRESS>`"
   exit 1
 end
