@@ -46,8 +46,6 @@ zstyle ':completion::complete:*' cache-path "$HOME/.zcache"
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
-source /opt/brew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # prompt
 function precmd() {
   errorhook
