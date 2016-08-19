@@ -31,6 +31,8 @@ alias gpl='git pull'
 alias gps='git push'
 alias gcl='git clone'
 alias ggrep='git grep'
+alias gst='git stash'
+alias gsp='git stash pop'
 # haskell
 alias ghc='stack ghc'
 alias ghci='stack ghci'
