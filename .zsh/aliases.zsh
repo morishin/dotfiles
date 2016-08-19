@@ -61,6 +61,7 @@ alias -s {arz,bz2,gz,lzh,rar,tar,tbz,tgz,xz,Z,zip,7z}=_extract
 # others
 alias amesh='curl -L 'https://ame.cnosuke.com/current' 2> /dev/null | imgcat'
 alias podi='bundle exec pod install; terminal-notifier -message "Done \`pod install\`"'
+alias json="jq '.' -C | less -R"
 # os specific
 case "${OSTYPE}" in
 darwin*)
