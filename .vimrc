@@ -83,6 +83,11 @@ autocmd FileType python setl textwidth=79
 autocmd FileType python setl formatoptions+=tcqw
 
 ""-------------
+"" Ruby
+""-------------
+au BufRead,BufNewFile Podfile set filetype=ruby
+
+""-------------
 ""  編集設定
 ""-------------
 set termencoding=utf-8

@@ -2,6 +2,7 @@
   templatedir = ~/.git-template
 [include]
   path = ~/.git-config/.gitconfig.user
+  path = ~/.git-config/.gitconfig.mergepbx
 [color]
   ui = auto
 [alias]
@@ -21,7 +22,7 @@
   log = diff-highlight | less -M
   show = diff-highlight | less -M
   diff = diff-highlight | less -M
-[merge "mergepbx"]
-  path = ~/.git-config/.gitconfig.mergepbx
 [push]
   default = current
+[merge]
+  ff = false

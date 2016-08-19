@@ -12,6 +12,8 @@
 		<string>selectLine:, cut:, moveUp:, moveToBeginningOfLine:, paste:, moveUp:</string>
 		<key>Move Line Down</key>
 		<string>selectLine:, cut:, moveDown:, moveToBeginningOfLine:, paste:, moveUp:</string>
+                <key>Newline</key>
+                <string>moveToEndOfLine:, insertNewline:</string>
 	</dict>
 	<key>Cancellation</key>
 	<dict>
