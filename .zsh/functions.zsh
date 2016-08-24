@@ -145,3 +145,14 @@ function preq() {
 
   open $url
 }
+
+function peco-select-git-checkout() {
+    local selected_branch="$(git branch --sort=-committerdate | grep -v '^\*.*' | peco --query "$LBUFFER" | awk -F ' ' '{print $1}')"
+    if [ -n $selected_branch ]; then
+      BUFFER="git checkout $selected_branch"
+      CURSOR=$#BUFFER
+      zle accept-line
+    fi
+}
+zle -N peco-select-git-checkout
+bindkey "^gc" peco-select-git-checkout

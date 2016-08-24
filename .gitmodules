@@ -1,3 +1,6 @@
 [submodule "yo.zsh"]
 	path = .zsh/yo.zsh
 	url = git@github.com:ymyzk/yo.zsh.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = git@github.com:tmux-plugins/tpm.git

@@ -3,7 +3,7 @@ setopt extended_glob
 
 cd `dirname $0`
 
-DOT_FILES=(.*~.git~.gitignore~.gitmodules com.googlecode.iterm2.plist)
+DOT_FILES=(.*~.git~.gitignore~.gitmodules~.DS_Store com.googlecode.iterm2.plist)
 for file in ${DOT_FILES[@]}
 do
   ln -sni $(pwd)/$file $HOME/$(basename $file)
