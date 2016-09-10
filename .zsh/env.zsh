@@ -11,5 +11,4 @@ export ZLS_COLORS=$LS_COLORS
 export HISTFILE=$HOME/.zsh-history
 export HISTSIZE=10000
 export SAVEHIST=100000
-export TERM=screen-256color-bce
 export ANDROID_HOME=/usr/local/opt/android-sdk
