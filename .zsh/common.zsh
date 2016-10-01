@@ -46,9 +46,19 @@ zstyle ':completion::complete:*' cache-path "$HOME/.zcache"
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
-# prompt
+function preexec () {
+   _prev_cmd_start_time=$SECONDS
+   _cmd_is_running=true
+}
+
 function precmd() {
-  errorhook
+  if $_cmd_is_running ; then
+    _prev_cmd_exec_time=$((SECONDS - _prev_cmd_start_time))
+    if ((_prev_cmd_exec_time > 5)); then
+      terminal-notifier -message "Command execution finished"
+    fi
+  fi
+  _cmd_is_running=false
   setprompt
 }
 
@@ -72,17 +82,6 @@ function setprompt() {
 }
 PROMPT2="%_%% "
 SPROMPT="%r is correct? [No,Yes,Abort,Exit]: "
-
-function errorhook() {
-  if [ $? -ne 0 ];then
-    tohaie
-  fi
-}
-
-function tohaie() {
-  #https://twitter.com/toto_pa/status/653915934034235392
-  #echo "\n${fg[red]}とはいえ、人はいずれ死ぬ${reset_color}"
-}
 
 # autojump
 if [ $(uname -s) = Darwin ]; then
