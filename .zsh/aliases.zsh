@@ -33,6 +33,8 @@ alias gcl='git clone'
 alias ggrep='git grep'
 alias gst='git stash'
 alias gsp='git stash pop'
+alias gcp='git cherry-pick'
+alias gb='git branch'
 # haskell
 alias ghc='stack ghc'
 alias ghci='stack ghci'
