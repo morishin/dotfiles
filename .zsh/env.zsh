@@ -12,3 +12,5 @@ export HISTFILE=$HOME/.zsh-history
 export HISTSIZE=10000
 export SAVEHIST=100000
 export ANDROID_HOME=/usr/local/opt/android-sdk
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
