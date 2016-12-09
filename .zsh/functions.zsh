@@ -1,3 +1,8 @@
+function gdh() {
+  git diff $@ | diff2html -s side -i stdin
+}
+compdef _git gdh=git-diff
+
 function gi() {
   curl -L -s https://www.gitignore.io/api/$@
 }
