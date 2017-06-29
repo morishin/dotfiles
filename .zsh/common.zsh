@@ -55,7 +55,7 @@ function precmd() {
   if $_cmd_is_running ; then
     _prev_cmd_exec_time=$((SECONDS - _prev_cmd_start_time))
     if ((_prev_cmd_exec_time > 5)); then
-      terminal-notifier -message "Command execution finished" -activate com.googlecode.iterm2
+      terminal-notifier -message "Command execution finished"
     fi
   fi
   _cmd_is_running=false
