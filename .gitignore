@@ -4,5 +4,6 @@
 .git-config/.gitconfig.user
 .git-config/.gitconfig.mergepbx
 .tmux/resurrect
+.vim/.netrwhist
 .vim/bundle/*
 !.vim/bundle/neobundle.vim

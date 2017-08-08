@@ -23,6 +23,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Note: You don't set neobundle setting in .gvimrc!
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'sheerun/vim-polyglot'
+NeoBundle 'thinca/vim-quickrun'
 
 call neobundle#end()
 
