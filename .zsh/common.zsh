@@ -46,20 +46,24 @@ zstyle ':completion::complete:*' cache-path "$HOME/.zcache"
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
+zmodload zsh/datetime
+
 function preexec () {
-   _prev_cmd_start_time=$SECONDS
+   _prev_cmd_start_time=$EPOCHREALTIME
    _cmd_is_running=true
 }
 
 function precmd() {
+  setprompt
   if $_cmd_is_running ; then
-    _prev_cmd_exec_time=$((SECONDS - _prev_cmd_start_time))
-    if ((_prev_cmd_exec_time > 5)); then
+    _prev_cmd_exec_time=$((EPOCHREALTIME - _prev_cmd_start_time))
+    if ((_prev_cmd_exec_time > 1)); then
+      printf "\e[94m-- %.2fs --\n" $_prev_cmd_exec_time
+    elif ((_prev_cmd_exec_time > 5)); then
       RBENV_VERSION=2.3 terminal-notifier -message "Command execution finished"
     fi
   fi
   _cmd_is_running=false
-  setprompt
 }
 
 function setprompt() {
