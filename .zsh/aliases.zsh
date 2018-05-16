@@ -73,6 +73,7 @@ alias amesh='curl -L 'https://ame.cnosuke.com/current' 2> /dev/null | imgcat'
 alias podi='bundle exec pod install; terminal-notifier -message "Done \`pod install\`"'
 alias json="jq '.' -C | less -R"
 alias vscode='open -a "Visual Studio Code"'
+alias simu="xcrun simctl boot \`xcrun simctl list devices | peco | sed -E 's/^.* \(([A-Z0-9\-]*)\) .*$/\1/1'\`"
 # os specific
 case "${OSTYPE}" in
 darwin*)
