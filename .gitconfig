@@ -3,6 +3,7 @@
 [include]
   path = ~/.git-config/.gitconfig.user
   path = ~/.git-config/.gitconfig.mergepbx
+  path = ~/.git-config/.gitconfig.hub
 [color]
   ui = auto
 [alias]
@@ -13,6 +14,7 @@
   cp = cherry-pick
   restore = !git st | grep 'deleted:' | sed -e 's/.*deleted: */git checkout HEAD -- /' | sh
   delete = "!$SHELL -c 'state=0; git st | while read line; do if [ \"$line\" = \"Untracked files:\" ]; then state=1; continue; fi; if [ $state -eq 1 ] && [ -z $line ]; then state=2; continue; fi; if [ $state -eq 2 ]; then if [ ! -z $line ]; then echo $line; continue; else break; fi; fi; done | xargs rm -rv | sed -e \"s/$/ deleted./\"' __dummy__"
+  pr = !"f() { hub browse -- \"pull/`git rev-parse --abbrev-ref HEAD`\"; }; f"
 [core]
   editor = vim
   quotepath = false
