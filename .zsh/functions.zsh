@@ -161,3 +161,8 @@ function peco-select-git-checkout() {
 }
 zle -N peco-select-git-checkout
 bindkey "^gc" peco-select-git-checkout
+
+function git-compare() {
+  remote=$(git remote get-url $(git branch -r | grep $(git symbolic-ref --short HEAD) | sed -E "s/^\s*(.+)\/$(git symbolic-ref --short HEAD)/\1/") | sed -E "s/.+[\/:](.+)\/.+\.git/\1/")
+  hub browse -- "compare/${1:-master}...$remote:$(git symbolic-ref --short HEAD)?expand=1"
+}
