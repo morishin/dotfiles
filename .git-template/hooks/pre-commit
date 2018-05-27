@@ -1,10 +1,7 @@
 #!/usr/bin/env ruby
 
 black_words = [
-  'puts',
-  'p',
   'binding.pry',
-  # 'return true',
 ]
 
 found_words = []
