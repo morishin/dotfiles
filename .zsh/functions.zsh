@@ -166,3 +166,7 @@ function git-compare() {
   remote=$(git remote get-url $(git branch -r | grep $(git symbolic-ref --short HEAD) | sed -E "s/^\s*(.+)\/$(git symbolic-ref --short HEAD)/\1/") | sed -E "s/.+[\/:](.+)\/.+\.git/\1/")
   hub browse -- "compare/${1:-master}...$remote:$(git symbolic-ref --short HEAD)?expand=1"
 }
+
+function morishinzo() {
+   envchain morishin aws s3 cp --acl public-read $1 s3://g.morishin.me/ | sed -E 's/.*s3(.*)/https\1/g'
+}
