@@ -170,3 +170,25 @@ function git-compare() {
 function morishinzo() {
    envchain morishin aws s3 cp --acl public-read $1 s3://g.morishin.me/ | sed -E 's/.*s3(.*)/https\1/g'
 }
+
+function gpl() {
+  if [ -z "$1" ]; then
+    remote=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} | sed -E "s/(.+)\/.+/\1/")
+    if [ -n "$remote" ]; then
+      git pull $remote $(git rev-parse --abbrev-ref HEAD)
+    fi
+  else
+    git pull $1 $(git rev-parse --abbrev-ref HEAD)
+  fi
+}
+
+function gps() {
+  if [ -z "$1" ]; then
+    remote=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} | sed -E "s/(.+)\/.+/\1/")
+    if [ -n "$remote" ]; then
+      git push $remote $(git rev-parse --abbrev-ref HEAD)
+    fi
+  else
+    git push $1 $(git rev-parse --abbrev-ref HEAD)
+  fi
+}
