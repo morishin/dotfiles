@@ -66,7 +66,9 @@ alias -s {arz,bz2,gz,lzh,rar,tar,tbz,tgz,xz,Z,zip,7z}=_extract
 alias amesh='curl -L 'https://ame.cnosuke.com/current' 2> /dev/null | imgcat'
 alias podi='bundle exec pod install; terminal-notifier -message "Done \`pod install\`"'
 alias json="jq '.' -C | less -R"
-alias vscode='open -a "Visual Studio Code"'
+function v() {
+  open -a "Visual Studio Code" ${1:-'.'}
+}
 alias simu="xcrun simctl boot \`xcrun simctl list devices | peco | sed -E 's/^.* \(([A-Z0-9\-]*)\) .*$/\1/1'\`"
 # os specific
 case "${OSTYPE}" in
