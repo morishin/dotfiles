@@ -59,8 +59,9 @@ function precmd() {
     _prev_cmd_exec_time=$((EPOCHREALTIME - _prev_cmd_start_time))
     if ((_prev_cmd_exec_time > 1)); then
       printf "\e[94m-- %.2fs --\n" $_prev_cmd_exec_time
-    elif ((_prev_cmd_exec_time > 5)); then
-      RBENV_VERSION=2.3 terminal-notifier -message "Command execution finished"
+    fi
+    if ((_prev_cmd_exec_time > 5)); then
+      terminal-notifier -message "Command execution finished"
     fi
   fi
   _cmd_is_running=false
