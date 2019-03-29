@@ -1,5 +1,5 @@
 ```shell
 git submodule init
 git submodule update
-./setup.sh
+./setup.sh #or `yes | ./setup.sh`
 ```
