@@ -19,4 +19,6 @@ if [ ! -e $HOME/.vim/bundle/neobundle.vim ]; then
   git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
 fi
 
+ln -si $(pwd)/scripts/* $HOME/.local/bin/
+
 unsetopt extended_glob

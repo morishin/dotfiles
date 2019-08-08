@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+require 'pathname'
+require 'uri'
+
+def parse_remote(remote_origin)
+  if remote_origin =~ /^https:\/\//
+    uri = URI.parse(remote_origin)
+    [uri.host, uri.path]
+  elsif remote_origin =~ /^[^:\/]+:\/?[^:\/]+\/[^:\/]+$/
+    host, path = remote_origin.split(":")
+    [host.split("@").last, path]
+  else
+    raise "Not supported origin url: #{remote_origin}"
+  end
+end
+
+git_dir = `git rev-parse --show-toplevel`.chomp
+exit 1 if git_dir == '' # not a git repository
+
+host, path = parse_remote(`git config remote.origin.url`.strip)
+github_repo_url = "https://#{host}/#{path.gsub(/\.git$/, '')}"
+
+file_path = ARGV[0]
+
+unless path
+  `open #{github_repo_url}`
+  exit
+end
+
+abs_path = Pathname.new(File.join(Dir.pwd, file_path))
+
+unless abs_path.exist?
+  warn "#{fullpath} does not exist"
+  exit 1
+end
+
+type = abs_path.directory? ? 'tree' : 'blob';
+relative_path = abs_path.to_s.sub(git_dir, '')
+github_url = "#{github_repo_url}/#{type}/master#{relative_path}"
+
+`open #{github_url}`
