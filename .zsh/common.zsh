@@ -55,7 +55,11 @@ function preexec () {
 
 function precmd() {
   setprompt
-  if $_cmd_is_running ; then
+
+  if [ -z "$_prev_cmd_start_time" ] ; then
+    return
+  fi
+  if $_cmd_is_running; then
     _prev_cmd_exec_time=$((EPOCHREALTIME - _prev_cmd_start_time))
     if ((_prev_cmd_exec_time > 1)); then
       printf "\e[94m-- %.2fs --\n" $_prev_cmd_exec_time
