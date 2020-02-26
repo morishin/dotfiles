@@ -42,6 +42,8 @@ alias ghc='stack ghc'
 alias ghci='stack ghci'
 alias runghc='stack runghc'
 alias runhaskell='stack runghc'
+# imagemagick
+alias convert='docker run -v $PWD:/mount -w /mount v4tech/imagemagick convert'
 # extract
 function _extract() {
   case $1 in
