@@ -32,3 +32,6 @@
   rebase = true
 [rerere]
   enabled = true
+[user]
+	name = morishin
+	email = sntr92@gmail.com

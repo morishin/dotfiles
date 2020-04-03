@@ -83,7 +83,7 @@ function airdrop() {
 }
 
 function peco-select-gitadd() {
-    local SELECTED_FILE_TO_ADD="$(git status --porcelain | \
+    local SELECTED_FILE_TO_ADD="$(git status -s | cut -c4- | \
                                   peco --query "$LBUFFER" | \
                                   awk -F ' ' '{print $NF}')"
     if [ -n "$SELECTED_FILE_TO_ADD" ]; then
@@ -94,7 +94,21 @@ function peco-select-gitadd() {
     # zle clear-screen
 }
 zle -N peco-select-gitadd
-bindkey "^g^a" peco-select-gitadd
+bindkey "^ga" peco-select-gitadd
+
+function peco-select-gitreset() {
+    local SELECTED_FILE_TO_RESET="$(git diff --staged --name-only --relative | \
+                                  peco --query "$LBUFFER" | \
+                                  awk -F ' ' '{print $NF}')"
+    if [ -n "$SELECTED_FILE_TO_RESET" ]; then
+      BUFFER="git reset $(echo "$SELECTED_FILE_TO_RESET" | tr '\n' ' ')"
+      CURSOR=$#BUFFER
+    fi
+    zle accept-line
+    # zle clear-screen
+}
+zle -N peco-select-gitreset
+bindkey "^gr" peco-select-gitreset
 
 genymotion_peco(){
   if [ -z "$GENYMOTION_APP_HOME" ]; then
