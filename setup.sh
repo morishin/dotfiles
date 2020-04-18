@@ -3,6 +3,9 @@ setopt extended_glob
 
 cd `dirname $0`
 
+echo
+echo "👉 Linking dotfiles..."
+
 DOT_FILES=(.*~.git~.gitignore~.gitmodules~.DS_Store~.config com.googlecode.iterm2.plist)
 for file in ${DOT_FILES[@]}
 do
@@ -15,10 +18,17 @@ do
   ln -si $(pwd)/$file/* $HOME/$file
 done
 
-if [ ! -e $HOME/.vim/bundle/neobundle.vim ]; then
-  git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
-fi
-
 ln -si $(pwd)/scripts/* $HOME/.local/bin/
+
+echo
+echo "👉 Setting up vim..."
+
+if ! type "nvim" > /dev/null; then
+  brew install neovim
+fi
+pip install --upgrade neovim
+curl -sS -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mkdir -p ~/.config/nvim
+ln -fnsv $(pwd)/.vimrc ~/.config/nvim/init.vim
 
 unsetopt extended_glob

@@ -10,3 +10,5 @@ for file in ${DOT_FILES[@]}
 do
   load $ZDOTDIR/$file
 done
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

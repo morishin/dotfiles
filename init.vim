@@ -1,0 +1,1 @@
+/Users/shintaro-morikawa/.config/nvim/init.vim
