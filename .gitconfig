@@ -15,11 +15,12 @@
   restore-deleted-files = !git status | grep 'deleted:' | sed -e 's/.*deleted: */git checkout HEAD -- /' | sh
   delete-untracked-files = "!$SHELL -c 'state=0; git st | while read line; do if [ \"$line\" = \"Untracked files:\" ]; then state=1; continue; fi; if [ $state -eq 1 ] && [ -z $line ]; then state=2; continue; fi; if [ $state -eq 2 ]; then if [ ! -z $line ]; then echo $line; continue; else break; fi; fi; done | xargs rm -rv | sed -e \"s/$/ deleted./\"' __dummy__"
 [core]
-  editor = vim
+  editor = nvim
   quotepath = false
   excludesfile = ~/.gitignore
   whitespace = trailing-space
   autocrlf = input
+  pager = diff-highlight | less -R
 [pager]
   log = diff-highlight | less -M
   show = diff-highlight | less -M
@@ -33,5 +34,8 @@
 [rerere]
   enabled = true
 [user]
-	name = morishin
-	email = sntr92@gmail.com
+  name = morishin
+  email = sntr92@gmail.com
+  signingkey = 1D72D0FFA7ECCBFB
+[commit]
+  gpgsign = true
