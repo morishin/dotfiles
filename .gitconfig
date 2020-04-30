@@ -33,9 +33,5 @@
   rebase = true
 [rerere]
   enabled = true
-[user]
-  name = morishin
-  email = sntr92@gmail.com
-  signingkey = 1D72D0FFA7ECCBFB
 [commit]
   gpgsign = true

@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+def confirm(message)
+  while true
+    puts "#{message} [y/N]"
+    answer = `exec < /dev/tty; read ANSWER; echo $ANSWER`
+    case answer
+    when /^[yY]/
+      return true
+    when /^[nN]/
+      return false
+    else
+      return false
+    end
+  end
+end
+
+black_words = [
+  'binding.pry',
+  'console.log',
+]
+
+found_words = []
+changed_files = `git diff --cached --name-only HEAD`
+changed_files.each_line do |filename|
+  changes = `git diff --cached -U0 HEAD -- "#{filename.chomp}"`
+  black_words.each do |word|
+    result = changes.split(/\n/).grep(/^\+.*\b#{word}\b/)
+    unless result.empty?
+      found_words << word
+    end
+  end
+end
+
+unless found_words.empty?
+  found_words.each { |word| puts "WARNING: '#{word}' is found." }
+  exit confirm("Do you want to proceed with the commit?")
+end
