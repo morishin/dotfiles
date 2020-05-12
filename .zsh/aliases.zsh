@@ -9,11 +9,6 @@ alias du='du -h'
 # mysql
 alias mysql='mysql --pager="less -SiFX"'
 alias psql='PAGER="less -SiFX" psql'
-# python
-alias py='python'
-alias py2='python2'
-alias py3='python3'
-alias activate='source `find . -regex ".*/bin/activate"`'
 # git
 alias g='git'
 compdef _git g=git
@@ -37,6 +32,7 @@ alias __git-cherry_pick_main=_git_cherry_pick
 alias gb='git branch'
 compdef _git gb=git-branch
 alias __git-branch_main=_git_branch
+alias remove-gomi="git status --short | perl -pe 's/^.+ //' | xargs perl -pi -e 's/^\s*(binding\.pry|console\.log).*\n//'"
 # haskell
 alias ghc='stack ghc'
 alias ghci='stack ghci'
@@ -68,7 +64,6 @@ function _extract() {
 alias -s {arz,bz2,gz,lzh,rar,tar,tbz,tgz,xz,Z,zip,7z}=_extract
 # others
 alias amesh='curl -L 'https://ame.cnosuke.com/current' 2> /dev/null | imgcat'
-alias terminal-notifier='terminal-notifier'
 alias json="jq '.' -C | less -R"
 function v() {
   open -a "Visual Studio Code" ${1:-'.'}
