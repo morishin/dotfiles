@@ -66,7 +66,19 @@ alias -s {arz,bz2,gz,lzh,rar,tar,tbz,tgz,xz,Z,zip,7z}=_extract
 alias amesh='curl -L 'https://ame.cnosuke.com/current' 2> /dev/null | imgcat'
 alias json="jq '.' -C | less -R"
 function v() {
-  open -a "Visual Studio Code" ${1:-'.'}
+  if [ -z $1 ]; then
+    DIR="."
+  else
+    setopt +o nomatch # suppress zsh message
+    WORKSPACE=`find . -maxdepth 1 -name *.code-workspace 2>/dev/null`
+    setopt -o nomatch
+    if [ $? -ne 0 ] || [ -z "$WORKSPACE" ]; then
+      DIR=$1
+    else
+      DIR=$WORKSPACE
+    fi
+  fi
+  open -a "Visual Studio Code" $DIR
 }
 alias simu="xcrun simctl boot \`xcrun simctl list devices | peco | sed -E 's/^.* \(([A-Z0-9\-]*)\) .*$/\1/1'\`"
 # os specific
