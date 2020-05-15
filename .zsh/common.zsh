@@ -112,14 +112,6 @@ if which pyenv > /dev/null; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
-# git-hooks
-function replace-githooks() {
-  if [ -e .git/hooks ]; then
-    rm -rf .git/hooks
-    ln -s ~/.git-template/hooks .git/hooks
-  fi
-}
-
 # docker toolbox
 # eval "$(docker-machine env default)"
 

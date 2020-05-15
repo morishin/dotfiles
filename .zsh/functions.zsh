@@ -181,13 +181,6 @@ function git-compare() {
   hub browse -- "compare/${1:-master}...$remote:$(git symbolic-ref --short HEAD)?expand=1"
 }
 
-function update-githooks() {
-  if [ -e .git/hooks ]; then
-    rm -rf .git/hooks
-    ln -s ~/.git-template/hooks .git/hooks
-  fi
-}
-
 function morishinzo() {
    envchain morishin aws s3 cp --acl public-read $1 s3://g.morishin.me/ | sed -E 's/.*s3(.*)/https\1/g'
 }
@@ -211,5 +204,13 @@ function gps() {
     fi
   else
     git push $1 $(git rev-parse --abbrev-ref HEAD)
+  fi
+}
+
+# git-hooks
+function replace-githooks() {
+  if [ -e .git/hooks ]; then
+    rm -rf .git/hooks
+    ln -s ~/.githooks .git/hooks
   fi
 }

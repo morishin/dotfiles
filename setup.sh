@@ -20,6 +20,8 @@ done
 
 ln -si $(pwd)/scripts/* $HOME/.local/bin/
 
+ln -s $HOME/.githooks $HOME/.git-template/hooks
+
 echo
 echo "👉 Setting up vim..."
 
