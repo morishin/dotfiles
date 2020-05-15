@@ -65,19 +65,18 @@ alias -s {arz,bz2,gz,lzh,rar,tar,tbz,tgz,xz,Z,zip,7z}=_extract
 # others
 alias json="jq '.' -C | less -R"
 function v() {
+  setopt +o nomatch # suppress zsh message
   if [ -z $1 ]; then
     DIR="."
   else
-    setopt +o nomatch # suppress zsh message
-    WORKSPACE=`find . -maxdepth 1 -name *.code-workspace 2>/dev/null`
-    if [ $? -ne 0 ] || [ -z "$WORKSPACE" ]; then
-      DIR=$1
-    else
-      DIR=$WORKSPACE
-    fi
-    setopt -o nomatch
+    DIR=$1
+  fi
+  WORKSPACE=`find $DIR -maxdepth 1 -name *.code-workspace 2>/dev/null`
+  if [ $? -eq 0 ] && [ -n "$WORKSPACE" ]; then
+    DIR=$WORKSPACE
   fi
   open -a "Visual Studio Code" $DIR
+  setopt -o nomatch
 }
 alias simu="xcrun simctl boot \`xcrun simctl list devices | peco | sed -E 's/^.* \(([A-Z0-9\-]*)\) .*$/\1/1'\`"
 # os specific
