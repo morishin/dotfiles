@@ -78,7 +78,7 @@ function v() {
     setopt -o nomatch
   fi
   open -a "Visual Studio Code" $DIR
-}r
+}
 alias simu="xcrun simctl boot \`xcrun simctl list devices | peco | sed -E 's/^.* \(([A-Z0-9\-]*)\) .*$/\1/1'\`"
 # os specific
 case "${OSTYPE}" in
