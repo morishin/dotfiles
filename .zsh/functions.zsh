@@ -85,7 +85,7 @@ function airdrop() {
 function peco-select-gitadd() {
     local SELECTED_FILE_TO_ADD="$(git status -s | cut -c4- | \
                                   peco --query "$LBUFFER" | \
-                                  awk -F ' ' '{print $NF}')"
+                                  awk -F ' ' '{ printf "\"%s\" ", $NF }')"
     if [ -n "$SELECTED_FILE_TO_ADD" ]; then
       BUFFER="git add $(echo "$SELECTED_FILE_TO_ADD" | tr '\n' ' ')"
       CURSOR=$#BUFFER
