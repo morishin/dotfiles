@@ -214,3 +214,5 @@ function replace-githooks() {
     ln -s ~/.githooks .git/hooks
   fi
 }
+
+function gcl() { git clone $1 && cd $(basename $_ .git) && replace-githooks }

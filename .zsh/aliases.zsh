@@ -22,7 +22,6 @@ alias gco='git checkout'
 compdef _git gco=git-checkout
 alias __git-checkout_main=_git_checkout
 alias gs='git status'
-alias gcl='git clone'
 alias ggrep='git grep'
 alias gst='git stash'
 alias gsp='git stash pop'
