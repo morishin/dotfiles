@@ -1,5 +1,6 @@
 [init]
   templatedir = ~/.git-template
+	defaultBranch = main
 [include]
   path = ~/.git-config/.gitconfig.user
   path = ~/.git-config/.gitconfig.mergepbx
@@ -35,3 +36,9 @@
   enabled = true
 [commit]
   gpgsign = true
+[gpg]
+	program = gpg
+[user]
+	signingkey = 10A9FD8589A9523B4F8E11D91D72D0FFA7ECCBFB
+[url "https://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:x-oauth-basic@github.com/"]
+	insteadOf = https://github.com/

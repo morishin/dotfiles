@@ -1,3 +1,6 @@
+autoload -Uz compinit
+compinit
+
 function gdh() {
   git diff $@ | diff2html -s side -i stdin
 }
@@ -99,7 +102,7 @@ bindkey "^ga" peco-select-gitadd
 function peco-select-gitreset() {
     local SELECTED_FILE_TO_RESET="$(git diff --staged --name-only --relative | \
                                   peco --query "$LBUFFER" | \
-                                  awk -F ' ' '{print $NF}')"
+                                  awk -F ' ' '{ printf "\"%s\" ", $NF }')"
     if [ -n "$SELECTED_FILE_TO_RESET" ]; then
       BUFFER="git reset $(echo "$SELECTED_FILE_TO_RESET" | tr '\n' ' ')"
       CURSOR=$#BUFFER
@@ -215,4 +218,8 @@ function replace-githooks() {
   fi
 }
 
-function gcl() { git clone $1 && cd $(basename $_ .git) && replace-githooks }
+function gcl() { git clone $1 $2 && cd $(basename $_ .git) && replace-githooks }
+
+function killp() {
+  kill -9 $(lsof -t -i:$1)
+}

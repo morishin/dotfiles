@@ -65,7 +65,7 @@ function precmd() {
       printf "\e[94m-- %.2fs --\n" $_prev_cmd_exec_time
     fi
     if ((_prev_cmd_exec_time > 5)); then
-      terminal-notifier -message "Command execution finished" -activate com.googlecode.iterm2
+      /opt/homebrew/bin/terminal-notifier -message "Command execution finished" -activate com.googlecode.iterm2
     fi
   fi
   _cmd_is_running=false
