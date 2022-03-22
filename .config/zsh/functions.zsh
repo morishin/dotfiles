@@ -10,11 +10,6 @@ function gi() {
   curl -L -s https://www.gitignore.io/api/$@
 }
 
-function chpwd() {
-  tmux rename-window ${PWD##*/}
-  ls -a
-}
-
 function pr() {
   if [ $# -eq 1 ]; then
     base=$1

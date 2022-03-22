@@ -99,10 +99,6 @@ else
   . /usr/share/autojump/autojump.sh
 fi
 
-# tmux
-# which tmux 2>&1 >/dev/null && [ -z $TMUX ] && (tmux -2 attach || tmux -2 new-session)
-# tmux rename-window ${PWD##*/}
-
 # rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init - )"; fi
 
