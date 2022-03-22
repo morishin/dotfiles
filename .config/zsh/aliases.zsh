@@ -1,8 +1,8 @@
 # utility
 alias ls='exa'
 alias ll='exa -l'
-alias la='exa -A'
-alias lla='exa -lA'
+alias la='exa -a'
+alias lla='exa -la'
 alias cp='cp -i'
 alias mv='mv -i'
 alias du='du -h'
