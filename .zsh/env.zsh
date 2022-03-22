@@ -1,7 +1,7 @@
 export LANG=ja_JP.UTF-8
 export LANGUAGE=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
-export EDITOR=nvim
+export EDITOR=vim
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export WORDCHARS="?!"
