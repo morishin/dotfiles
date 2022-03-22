@@ -11,34 +11,18 @@ alias mysql='mysql --pager="less -SiFX"'
 alias psql='PAGER="less -SiFX" psql'
 # git
 alias g='git'
-compdef _git g=git
-alias gg='git graph'
+alias gg='git g'
 alias ga='git add .'
 alias gcm='git commit'
 alias gd='git diff'
-compdef _git gd=git-diff
-alias __git-diff_main=_git_diff
 alias gco='git checkout'
-compdef _git gco=git-checkout
-alias __git-checkout_main=_git_checkout
 alias gs='git status'
 alias ggrep='git grep'
 alias gst='git stash'
 alias gsp='git stash pop'
 alias gcp='git cherry-pick'
-compdef _git gcp=git-cherry-pick
-alias __git-cherry_pick_main=_git_cherry_pick
 alias gb='git branch'
-compdef _git gb=git-branch
-alias __git-branch_main=_git_branch
 alias remove-gomi="git status --short | perl -pe 's/^.+ //' | xargs perl -pi -e 's/^\s*(binding\.pry|console\.log).*\n//'"
-# haskell
-alias ghc='stack ghc'
-alias ghci='stack ghci'
-alias runghc='stack runghc'
-alias runhaskell='stack runghc'
-# imagemagick
-alias convert='docker run -v $PWD:/mount -w /mount v4tech/imagemagick convert'
 # extract
 function _extract() {
   case $1 in

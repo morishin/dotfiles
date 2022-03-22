@@ -1,5 +1,5 @@
 [init]
-  templatedir = ~/.git-template
+  templatedir = $XDG_CONFIG_HOME/.git-template
 	defaultBranch = main
 [include]
   path = ~/.git-config/.gitconfig.user
@@ -8,7 +8,7 @@
 [color]
   ui = auto
 [alias]
-  graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
+  g = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
   st = status
   cm = commit
   co = checkout

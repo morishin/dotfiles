@@ -6,7 +6,7 @@ cd `dirname $0`
 echo
 echo "👉 Linking dotfiles..."
 
-DOT_FILES=(.*~.git~.gitignore~.gitmodules~.DS_Store~.config com.googlecode.iterm2.plist)
+DOT_FILES=(.*~.git~.gitignore~.gitmodules~.DS_Store~.config)
 for file in ${DOT_FILES[@]}
 do
   ln -sni $(pwd)/$file $HOME/$(basename $file)
@@ -18,8 +18,6 @@ do
   ln -si $(pwd)/$file/* $HOME/$file
 done
 
-ln -si $(pwd)/scripts/* $HOME/.local/bin/
-
-ln -s $HOME/.githooks $HOME/.git-template/hooks
+ln -si $(pwd)/bin/* $HOME/.local/bin/
 
 unsetopt extended_glob

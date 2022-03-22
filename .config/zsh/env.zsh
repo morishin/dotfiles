@@ -11,8 +11,6 @@ export ZLS_COLORS=$LS_COLORS
 export HISTFILE=$HOME/.zsh-history
 export HISTSIZE=10000
 export SAVEHIST=100000
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
-export PATH="$ANDROID_HOME/tools/bin:$PATH"
 export NODE_OPTIONS="--max-old-space-size=8192"
+export XDG_CONFIG_HOME="$HOME/.config"
