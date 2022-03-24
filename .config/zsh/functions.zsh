@@ -10,20 +10,6 @@ function gi() {
   curl -L -s https://www.gitignore.io/api/$@
 }
 
-function pr() {
-  if [ $# -eq 1 ]; then
-    base=$1
-  else
-    base="develop"
-  fi
-  DEFAULT_IFS=$IFS
-  IFS='/'
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/' | read tag num
-  IFS=$DEFAULT_IFS
-  hub pull-request -i $num -b $base -h $tag/$num
-  hub browse -- pull/$num
-}
-
 function peco-select-history() {
     local tac
     if which tac > /dev/null; then
@@ -108,22 +94,6 @@ function peco-select-gitreset() {
 zle -N peco-select-gitreset
 bindkey "^gr" peco-select-gitreset
 
-genymotion_peco(){
-  if [ -z "$GENYMOTION_APP_HOME" ]; then
-    echo "GENYMOTION_APP_HOME is empty. Use '/Applications/Genymotion.app/' instead this time."
-    player="/Applications/Genymotion.app/Contents/MacOS/player"
-  else
-    player="$GENYMOTION_APP_HOME/Contents/MacOS/player"
-  fi
-
-  vm_name=`VBoxManage list vms | peco`
-  if [[ $vm_name =~ ^\"(.+)\".* ]] ; then
-     name=${match[1]}
-     echo "boot $name"
-     $player --vm-name "$name" &
-  fi
-}
-
 function mspec() {
   find **/spec -name "*$1*_spec.rb" | xargs bundle exec rspec
 }
@@ -179,10 +149,6 @@ function git-compare() {
   hub browse -- "compare/${1:-master}...$remote:$(git symbolic-ref --short HEAD)?expand=1"
 }
 
-function morishinzo() {
-   envchain morishin aws s3 cp --acl public-read $1 s3://g.morishin.me/ | sed -E 's/.*s3(.*)/https\1/g'
-}
-
 function gpl() {
   if [ -z "$1" ]; then
     remote=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} | sed -E "s/(.+)\/.+/\1/")
@@ -194,23 +160,10 @@ function gpl() {
   fi
 }
 
-function gps() {
-  if [ -z "$1" ]; then
-    remote=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} | sed -E "s/(.+)\/.+/\1/")
-    if [ -n "$remote" ]; then
-      git push $remote $(git rev-parse --abbrev-ref HEAD)
-    fi
-  else
-    git push $1 $(git rev-parse --abbrev-ref HEAD)
-  fi
-}
-
 # git-hooks
 function replace-githooks() {
-  if [ -e .git/hooks ]; then
-    rm -rf .git/hooks
-    ln -s ~/.githooks .git/hooks
-  fi
+  rm -rf .git/hooks
+  ln -s $GIT_TEMPLATE_DIR/hooks .git/hooks
 }
 
 function gcl() { git clone $1 $2 && cd $(basename $_ .git) && replace-githooks }
