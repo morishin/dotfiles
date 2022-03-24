@@ -11,16 +11,13 @@ alias mysql='mysql --pager="less -SiFX"'
 alias psql='PAGER="less -SiFX" psql'
 # git
 alias g='git'
+compdef g=git
 alias gg='git g'
 alias ga='git add .'
 alias gcm='git commit'
 alias gd='git diff'
 alias gco='git checkout'
 alias gs='git status'
-alias ggrep='git grep'
-alias gst='git stash'
-alias gsp='git stash pop'
-alias gcp='git cherry-pick'
 alias gb='git branch'
 alias remove-gomi="git status --short | perl -pe 's/^.+ //' | xargs perl -pi -e 's/^\s*(binding\.pry|console\.log).*\n//'"
 # extract

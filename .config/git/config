@@ -1,10 +1,5 @@
 [init]
-  templatedir = $XDG_CONFIG_HOME/.git-template
 	defaultBranch = main
-[include]
-  path = ~/.git-config/.gitconfig.user
-  path = ~/.git-config/.gitconfig.mergepbx
-  path = ~/.git-config/.gitconfig.hub
 [color]
   ui = auto
 [alias]

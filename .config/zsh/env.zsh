@@ -14,3 +14,4 @@ export SAVEHIST=100000
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export NODE_OPTIONS="--max-old-space-size=8192"
 export XDG_CONFIG_HOME="$HOME/.config"
+export GIT_TEMPLATE_DIR="$XDG_CONFIG_HOME/git/.git-template"
