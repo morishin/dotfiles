@@ -4,7 +4,7 @@ function load() {
   fi
 }
 
-DOT_FILES=(pathes.zsh env.zsh nix.zsh machine-specific.zsh common.zsh credentials.zsh functions.zsh aliases.zsh cargo.zsh)
+DOT_FILES=(machine-specific.zsh env.zsh pathes.zsh nix.zsh common.zsh credentials.zsh functions.zsh aliases.zsh cargo.zsh npm-completion.zsh)
 
 for file in ${DOT_FILES[@]}
 do

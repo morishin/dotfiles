@@ -57,6 +57,7 @@ function v() {
   setopt -o nomatch
 }
 alias simu="xcrun simctl boot \`xcrun simctl list devices | peco | sed -E 's/^.* \(([A-Z0-9\-]*)\) .*$/\1/1'\`"
+alias mkfile="mkdir -p \"$(dirname \"$1\")\" && touch \"$1\""
 # os specific
 case "${OSTYPE}" in
 darwin*)
