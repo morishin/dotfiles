@@ -2,6 +2,7 @@
 	defaultBranch = main
 [color]
   ui = auto
+	status = always
 [alias]
   g = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
   st = status
@@ -37,5 +38,3 @@
 	signingkey = 10A9FD8589A9523B4F8E11D91D72D0FFA7ECCBFB
 	name = morishin
 	email = sntr92@gmail.com
-[url "https://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:x-oauth-basic@github.com/"]
-	insteadOf = https://github.com/

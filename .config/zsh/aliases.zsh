@@ -56,7 +56,7 @@ function v() {
   open -a "Visual Studio Code" $DIR
   setopt -o nomatch
 }
-alias simu="xcrun simctl boot \`xcrun simctl list devices | peco | sed -E 's/^.* \(([A-Z0-9\-]*)\) .*$/\1/1'\`"
+alias simu="xcrun simctl boot \`xcrun simctl list devices | sk | sed -E 's/^.* \(([A-Z0-9\-]*)\) .*$/\1/1'\`"
 alias mkfile="mkdir -p \"$(dirname \"$1\")\" && touch \"$1\""
 # os specific
 case "${OSTYPE}" in
@@ -64,8 +64,8 @@ darwin*)
   alias size='du -h -d 1'
   alias op='open .'
   alias chrome='open -a Google\ Chrome'
-  alias installapp='find ./ -name "*.apk" | peco | xargs adb install -r'
-  alias uninstallapp='adbp shell pm list package | sed -e s/package:// | peco | xargs adbp uninstall'
+  alias installapp='find ./ -name "*.apk" | sk | xargs adb install -r'
+  alias uninstallapp='adbp shell pm list package | sed -e s/package:// | sk | xargs adbp uninstall'
   ;;
 linux*)
   alias size='du -h --max-depth 1'

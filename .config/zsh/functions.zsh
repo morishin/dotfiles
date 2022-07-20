@@ -10,24 +10,8 @@ function gi() {
   curl -L -s https://www.gitignore.io/api/$@
 }
 
-# function peco-select-history() {
-#     local tac
-#     if which tac > /dev/null; then
-#         tac="tac"
-#     else
-#         tac="tail -r"
-#     fi
-#     BUFFER=$(history -n 1 | \
-#         eval $tac | \
-#         peco --query "$LBUFFER")
-#     CURSOR=$#BUFFER
-#     zle clear-screen
-# }
-# zle -N peco-select-history
-# bindkey '^r' peco-select-history
-
 function pskill() {
-    ps aux | peco | awk '{print $2}' | xargs sudo kill -9
+    ps aux | sk | awk '{print $2}' | xargs sudo kill -9
 }
 
 function adbss() {
@@ -66,38 +50,6 @@ function airdrop() {
     terminal-share -service airdrop -url $target
 }
 
-function peco-select-gitadd() {
-    local SELECTED_FILE_TO_ADD="$(git status -s | cut -c4- | \
-                                  peco --query "$LBUFFER" | \
-                                  awk -F ' ' '{ printf "\"%s\" ", $NF }')"
-    if [ -n "$SELECTED_FILE_TO_ADD" ]; then
-      BUFFER="git add $(echo "$SELECTED_FILE_TO_ADD" | tr '\n' ' ')"
-      CURSOR=$#BUFFER
-    fi
-    zle accept-line
-    # zle clear-screen
-}
-zle -N peco-select-gitadd
-bindkey "^ga" peco-select-gitadd
-
-function peco-select-gitreset() {
-    local SELECTED_FILE_TO_RESET="$(git diff --staged --name-only --relative | \
-                                  peco --query "$LBUFFER" | \
-                                  awk -F ' ' '{ printf "\"%s\" ", $NF }')"
-    if [ -n "$SELECTED_FILE_TO_RESET" ]; then
-      BUFFER="git reset $(echo "$SELECTED_FILE_TO_RESET" | tr '\n' ' ')"
-      CURSOR=$#BUFFER
-    fi
-    zle accept-line
-    # zle clear-screen
-}
-zle -N peco-select-gitreset
-bindkey "^gr" peco-select-gitreset
-
-function mspec() {
-  find **/spec -name "*$1*_spec.rb" | xargs bundle exec rspec
-}
-
 # github
 function github-url() {
 	ruby <<-EOS
@@ -132,17 +84,6 @@ function preq() {
 
   open $url
 }
-
-function peco-select-git-checkout() {
-    local selected_branch="$(git branch --sort=-committerdate | grep -v '^\*.*' | peco --query "$LBUFFER" | awk -F ' ' '{print $1}')"
-    if [ -n $selected_branch ]; then
-      BUFFER="git checkout $selected_branch"
-      CURSOR=$#BUFFER
-      zle accept-line
-    fi
-}
-zle -N peco-select-git-checkout
-bindkey "^gc" peco-select-git-checkout
 
 function git-compare() {
   remote=$(git remote get-url $(git branch -r | grep $(git symbolic-ref --short HEAD) | sed -E "s/^\s*(.+)\/$(git symbolic-ref --short HEAD)/\1/") | sed -E "s/.+[\/:](.+)\/.+\.git/\1/")

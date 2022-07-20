@@ -99,14 +99,11 @@ else
   . /usr/share/autojump/autojump.sh
 fi
 
+# bun completions
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+
 # rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init - )"; fi
-
-# pyenv
-if which pyenv > /dev/null; then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
 
 # mcfly
 eval "$(mcfly init zsh)"

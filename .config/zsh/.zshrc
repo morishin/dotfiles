@@ -4,9 +4,10 @@ function load() {
   fi
 }
 
-DOT_FILES=(machine-specific.zsh env.zsh pathes.zsh nix.zsh common.zsh credentials.zsh functions.zsh aliases.zsh cargo.zsh npm-completion.zsh)
+DOT_FILES=(machine-specific.zsh env.zsh pathes.zsh nix.zsh common.zsh functions.zsh aliases.zsh cargo.zsh npm-completion.zsh)
 
 for file in ${DOT_FILES[@]}
 do
   load $ZDOTDIR/$file
 done
+
