@@ -30,11 +30,13 @@
   rebase = true
 [rerere]
   enabled = true
-[commit]
-  gpgsign = true
 [gpg]
 	program = gpg
+[commit]
+  gpgsign = true
 [user]
 	signingkey = 10A9FD8589A9523B4F8E11D91D72D0FFA7ECCBFB
 	name = morishin
 	email = sntr92@gmail.com
+[includeIf "gitdir:~/work/"]
+  path = ~/.config/git/includes/config_cookpad

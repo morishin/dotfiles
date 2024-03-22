@@ -1,4 +1,0 @@
-#!/bin/sh -eu
-SCRIPT_DIR=$PWD/$(dirname $0)
-exec < /dev/tty
-for file in `ls $SCRIPT_DIR/pre-commit-scripts/*`; do $file; done

@@ -14,7 +14,7 @@ function pskill() {
 function adbss() {
     DATE=`date '+%y%m%d%H%M%S'`
     adb shell screencap -p /sdcard/${DATE}.png
-    adb pull /sdcard/${DATE}.png ~/Desktop/
+    adb pull /sdcard/${DATE}.png ~/Downloads/
     adb shell rm /sdcard/${DATE}.png
 }
 
@@ -98,13 +98,9 @@ function gpl() {
   fi
 }
 
-# git-hooks
-function replace-githooks() {
-  rm -rf .git/hooks
-  ln -s $GIT_TEMPLATE_DIR/hooks .git/hooks
+function gcl() {
+  git clone $1 $2 && cd $(basename $_ .git)
 }
-
-function gcl() { git clone $1 $2 && cd $(basename $_ .git) && replace-githooks }
 
 function killp() {
   kill -9 $(lsof -t -i:$1)

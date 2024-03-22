@@ -1,0 +1,5 @@
+[commit]
+  gpgsign = false
+[user]
+	name = morishin
+	email = shintaro-morikawa@cookpad.com

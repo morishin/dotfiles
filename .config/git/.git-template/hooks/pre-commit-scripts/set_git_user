@@ -1,6 +1,0 @@
-if [[ $(pwd) =~ ^/Users/shintaro-morikawa/work ]]; then
-  git config --local user.name morishin
-  git config --local user.email shintaro-morikawa@cookpad.com
-  git config --local commit.gpgsign false
-fi
-exit 0
