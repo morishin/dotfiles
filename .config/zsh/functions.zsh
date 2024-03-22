@@ -1,6 +1,3 @@
-autoload -Uz compinit
-compinit
-
 function gdh() {
   git diff $@ | diff2html -s side -i stdin
 }

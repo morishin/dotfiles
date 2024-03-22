@@ -1,4 +1,4 @@
-autoload -U compaudit compinit
+autoload -Uz compaudit compinit && compinit -u
 autoload -Uz url-quote-magic; zle -N self-insert url-quote-magic
 autoload -U colors; colors
 
@@ -107,3 +107,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init - )"; fi
 
 # mcfly
 eval "$(mcfly init zsh)"
+
+# direnv
+eval "$(direnv hook zsh)"

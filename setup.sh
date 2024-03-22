@@ -12,7 +12,7 @@ do
   ln -sni $(pwd)/$file $HOME/$(basename $file)
 done
 
-DOT_FILES_NOT_OVERWRITE_DIRECTORY=(.config)
+DOT_FILES_NOT_OVERWRITE_DIRECTORY=(.config .vim)
 for file in ${DOT_FILES_NOT_OVERWRITE_DIRECTORY[@]}
 do
   ln -si $(pwd)/$file/* $HOME/$file

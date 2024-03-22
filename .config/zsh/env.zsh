@@ -11,9 +11,9 @@ export ZLS_COLORS=$LS_COLORS
 export HISTFILE=$HOME/.zsh-history
 export HISTSIZE=10000
 export SAVEHIST=100000
-export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
 export NODE_OPTIONS="--max-old-space-size=8192"
 export XDG_CONFIG_HOME="$HOME/.config"
 export GIT_TEMPLATE_DIR="$XDG_CONFIG_HOME/git/.git-template"
-export VOLTA_HOME="$HOME/.volta"
+# export VOLTA_HOME="$HOME/.volta"
 export BUN_INSTALL="$HOME/.bun"
