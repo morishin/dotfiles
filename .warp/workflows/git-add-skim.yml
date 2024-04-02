@@ -1,0 +1,10 @@
+---
+name: git-add selector
+command: sk -m --ansi -i -c "git status -s" | cut -c4- | xargs git add
+tags:
+  - git
+description: git add selected files with skim
+author: morishin
+arguments: []
+author_url: https://github.com/morishin
+shells: []

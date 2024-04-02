@@ -1,0 +1,10 @@
+---
+name: git-switch selector
+command: sk --ansi -i -c "git branch --sort=-committerdate | grep -v '^\*.*'" | xargs git switch
+tags:
+  - git
+description: git switch selected branch with skim
+author: morishin
+arguments: []
+author_url: https://github.com/morishin
+shells: []

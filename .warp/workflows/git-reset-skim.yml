@@ -1,0 +1,10 @@
+---
+name: git-reset selector
+command: sk -m --ansi -i -c "git status -s" | cut -c4- | xargs git reset
+tags:
+  - git
+description: git reset selected files with skim
+author: morishin
+arguments: []
+author_url: https://github.com/morishin
+shells: []
