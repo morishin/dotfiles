@@ -48,50 +48,6 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 zmodload zsh/datetime
 
-function preexec () {
-   _prev_cmd_start_time=$EPOCHREALTIME
-   _cmd_is_running=true
-}
-
-function precmd() {
-  # setprompt
-
-  if [ -z "$_prev_cmd_start_time" ] ; then
-    return
-  fi
-  if $_cmd_is_running; then
-    _prev_cmd_exec_time=$((EPOCHREALTIME - _prev_cmd_start_time))
-    if ((_prev_cmd_exec_time > 1)); then
-      printf "\e[94m-- %.2fs --\n" $_prev_cmd_exec_time
-    fi
-    if ((_prev_cmd_exec_time > 5)); then
-      /opt/homebrew/bin/terminal-notifier -message "Command execution finished" -activate com.googlecode.iterm2
-    fi
-  fi
-  _cmd_is_running=false
-}
-
-# function setprompt() {
-#   PROMPT="%{${fg[green]}%}%n%{${fg[yellow]}%} %~%{${reset_color}%}"
-#   st=`git status 2>/dev/null`
-#   if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-#     color=${fg[cyan]}
-#   elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-#     color=${fg[blue]}
-#   elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-#     color=${fg_bold[red]}
-#   else
-#     color=${fg[red]}
-#   fi
-#   PROMPT+=" %{$color%}$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /')%b%{${reset_color}%}"
-
-#   if [ -n "$VIRTUAL_ENV" ]; then
-#     PROMPT="(`basename \"$VIRTUAL_ENV\"`)$PROMPT"
-#   fi
-# }
-# PROMPT2="%_%% "
-# SPROMPT="%r is correct? [No,Yes,Abort,Exit]: "
-
 # autojump
 if [ $(uname -s) = Darwin ]; then
   [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
