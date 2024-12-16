@@ -9,3 +9,4 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/binexport PATH="$HOME/.
 # export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.rd/bin:$PATH"
+export PATH="$HOME/.deno/bin:$PATH"

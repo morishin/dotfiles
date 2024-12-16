@@ -17,3 +17,4 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # export GIT_TEMPLATE_DIR="$XDG_CONFIG_HOME/git/.git-template"
 # export VOLTA_HOME="$HOME/.volta"
 export BUN_INSTALL="$HOME/.bun"
+export GPG_TTY=${TTY}
