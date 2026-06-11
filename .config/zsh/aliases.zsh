@@ -12,13 +12,16 @@ alias psql='PAGER="less -SiFX" psql'
 # git
 alias g='git'
 compdef g=git
-alias gg='git g'
-alias ga='git add .'
+alias gg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative --all'
+alias gas='git-add-select'
+alias grs='git-reset-select'
+alias gss='git-switch-select'
 alias gcm='git commit'
 alias gd='git diff'
 alias gco='git checkout'
 alias gs='git status'
 alias gb='git branch'
+alias gcp='git cherry-pick'
 alias remove-gomi="git status --short | perl -pe 's/^.+ //' | xargs perl -pi -e 's/^\s*(binding\.pry|console\.log).*\n//'"
 # extract
 function _extract() {
@@ -56,6 +59,16 @@ function v() {
   open -a "Visual Studio Code" $DIR
   setopt -o nomatch
 }
+function x() {
+  setopt +o nomatch # suppress zsh message
+  if [ -z $1 ]; then
+    DIR="."
+  else
+    DIR=$1
+  fi
+  xed $DIR
+  setopt -o nomatch
+}
 alias simu="xcrun simctl boot \`xcrun simctl list devices | sk | sed -E 's/^.* \(([A-Z0-9\-]*)\) .*$/\1/1'\`"
 alias mkfile="mkdir -p \"$(dirname \"$1\")\" && touch \"$1\""
 # os specific
@@ -71,3 +84,4 @@ linux*)
   alias size='du -h --max-depth 1'
   ;;
 esac
+export PATH="$HOME/develop/claude-sandbox/bin:$PATH"

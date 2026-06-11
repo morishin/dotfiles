@@ -18,3 +18,4 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # export VOLTA_HOME="$HOME/.volta"
 export BUN_INSTALL="$HOME/.bun"
 export GPG_TTY=${TTY}
+export CLAUDE_CODE_ENABLE_AUTO_MODE=1

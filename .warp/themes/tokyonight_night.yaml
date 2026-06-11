@@ -1,5 +1,5 @@
 # https://github.com/folke/tokyonight.nvim/blob/main/extras/alacritty/tokyonight_night.toml
-accent: '#283457'
+accent: '#7aa2f7'
 background: '#1a1b26' # Terminal background color
 foreground: '#c0caf5' # The foreground color.
 details: darker

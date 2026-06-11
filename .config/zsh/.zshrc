@@ -18,9 +18,13 @@ DOT_FILES=(
   bun.zsh
   asdf.zsh
   starship.zsh
+  fzf.zsh
 )
 
 for file in ${DOT_FILES[@]}
 do
   load $ZDOTDIR/$file
 done
+
+# bun completions
+[ -s "/Users/morishin/.bun/_bun" ] && source "/Users/morishin/.bun/_bun"
