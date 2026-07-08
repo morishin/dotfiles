@@ -1,0 +1,27 @@
+#!/bin/bash
+# usage: ssm-connect ubuntu@name-tag-value
+
+export AWS_REGION=${AWS_REGION:-ap-northeast-1}
+
+user=${1%@*}
+name=${1#*@}
+
+instance_id=$(
+  aws ec2 describe-instances \
+    --filters "Name=tag:Name,Values=$name" \
+    --query "Reservations[].Instances[].InstanceId" \
+    --output text
+)
+if [ -z "$instance_id" ]; then
+  echo "Instance with name $name not found." 2>&1
+  exit 1
+fi
+
+args=( --target "$instance_id" )
+
+# $user == $name if no @ in input
+if [ "$user" != "$name" ]; then
+  args+=( --document-name AWS-StartInteractiveCommand --parameters "command=sudo -i -u $user" )
+fi
+
+aws ssm start-session "${args[@]}"

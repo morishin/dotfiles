@@ -10,11 +10,9 @@ load $HOME/develop/dotfiles/dotfiles-work/zsh/work.zsh
 DOT_FILES=(
   env.zsh
   pathes.zsh
-  nix.zsh
   common.zsh
   functions.zsh
   aliases.zsh
-  cargo.zsh
   completions.zsh
   starship.zsh
 )

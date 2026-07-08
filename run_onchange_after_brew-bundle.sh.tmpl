@@ -1,7 +1,4 @@
 #!/bin/sh
-# Install packages the dotfiles depend on. Re-runs when a Brewfile changes.
+# Install packages the dotfiles depend on. Re-runs when the Brewfile changes.
 # Brewfile hash: {{ include "Brewfile" | sha256sum }}
 brew bundle --file "{{ .chezmoi.sourceDir }}/Brewfile"
-if [ -f "{{ .chezmoi.sourceDir }}/dotfiles-work/Brewfile" ]; then
-  brew bundle --file "{{ .chezmoi.sourceDir }}/dotfiles-work/Brewfile"
-fi
