@@ -11,9 +11,10 @@ chezmoi init --source ~/develop/dotfiles --apply
 ```
 
 `chezmoi init` asks whether the machine is a work machine. On work machines,
-the private [dotfiles-work](https://github.com/morishin/dotfiles-work) repo is
-cloned to `~/develop/dotfiles-work` and its settings are loaded from `.zshrc`
-and the git config. Personal machines simply skip them.
+the private [dotfiles-work](https://github.com/morishin/dotfiles-work)
+submodule (`dotfiles-work/`) is initialized and its settings are loaded from
+`.zshrc` and the git config. Personal machines leave the submodule empty and
+simply skip them.
 
 ## Daily usage
 

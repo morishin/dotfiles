@@ -42,6 +42,6 @@
 [credential "https://gist.github.com"]
 	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
-# work-machine settings from the private dotfiles-work repo (ignored when absent)
+# work-machine settings from the private dotfiles-work submodule (ignored when absent)
 [include]
-  path = ~/develop/dotfiles-work/git/config.inc
+  path = ~/develop/dotfiles/dotfiles-work/git/config.inc

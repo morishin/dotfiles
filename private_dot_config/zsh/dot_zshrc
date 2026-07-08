@@ -4,8 +4,8 @@ function load() {
   fi
 }
 
-# work-machine settings from the private dotfiles-work repo (skipped when absent)
-load $HOME/develop/dotfiles-work/zsh/work.zsh
+# work-machine settings from the private dotfiles-work submodule (skipped when absent)
+load $HOME/develop/dotfiles/dotfiles-work/zsh/work.zsh
 
 DOT_FILES=(
   env.zsh

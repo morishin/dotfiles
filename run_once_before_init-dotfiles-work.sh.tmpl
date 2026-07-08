@@ -1,0 +1,5 @@
+{{ if .work -}}
+#!/bin/sh
+# fetch work-only settings (private submodule) referenced by .zshrc and git config
+git -C "{{ .chezmoi.sourceDir }}" submodule update --init
+{{ end -}}
