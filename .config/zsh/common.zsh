@@ -61,8 +61,8 @@ fi
 # rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init - )"; fi
 
-# mcfly
-eval "$(mcfly init zsh)"
+# atuin (ctrl+r history search)
+eval "$(atuin init zsh --disable-up-arrow --disable-ai)"
 
 # direnv
 eval "$(direnv hook zsh)"
