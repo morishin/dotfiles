@@ -6,6 +6,7 @@ brew "direnv"                  # common.zsh
 brew "gh"                      # git credential helper (git/config)
 brew "git-lfs"                 # git lfs filter (git/config)
 brew "gnupg"                   # commit signing (git/config)
+brew "pinentry-mac"            # gpg-agent passphrase prompt (git/config)
 brew "jq"                      # json alias (aliases.zsh)
 brew "sk"                      # skim fuzzy finder (aliases.zsh, functions.zsh)
 brew "starship"                # prompt (starship.zsh)
