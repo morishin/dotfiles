@@ -6,7 +6,6 @@
 [core]
   editor = vim
   quotepath = false
-	excludesfile = /Users/morishin/.gitignore
   whitespace = trailing-space
   autocrlf = input
   pager = less -R
