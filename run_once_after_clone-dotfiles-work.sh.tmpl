@@ -1,7 +1,0 @@
-{{ if .work -}}
-#!/bin/sh
-# clone work-only settings (private repo) referenced by .zshrc and git config
-if [ ! -d "$HOME/develop/dotfiles-work" ]; then
-  git clone https://github.com/morishin/dotfiles-work.git "$HOME/develop/dotfiles-work"
-fi
-{{ end -}}
