@@ -14,8 +14,5 @@ export SAVEHIST=100000
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
 export NODE_OPTIONS="--max-old-space-size=8192"
 export XDG_CONFIG_HOME="$HOME/.config"
-# export GIT_TEMPLATE_DIR="$XDG_CONFIG_HOME/git/.git-template"
-# export VOLTA_HOME="$HOME/.volta"
 export BUN_INSTALL="$HOME/.bun"
 export GPG_TTY=${TTY}
-export CLAUDE_CODE_ENABLE_AUTO_MODE=1
