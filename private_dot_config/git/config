@@ -25,15 +25,23 @@
 	program = gpg
 [commit]
   gpgsign = true
-	template = /Users/morishin/.stCommitMsg
 [user]
 	signingkey = 10A9FD8589A9523B4F8E11D91D72D0FFA7ECCBFB
 	name = Shintaro Morikawa
 	email = sntr92@gmail.com
-[includeIf "gitdir:~/work/"]
-  path = ~/.config/git/includes/config_cookpad
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[submodule]
+  recurse = true
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+# work-machine settings from the private dotfiles-work repo (ignored when absent)
+[include]
+  path = ~/develop/dotfiles-work/git/config.inc

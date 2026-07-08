@@ -1,0 +1,5 @@
+{{ $work := promptBoolOnce . "work" "work" -}}
+sourceDir = "~/develop/dotfiles"
+
+[data]
+    work = {{ $work }}

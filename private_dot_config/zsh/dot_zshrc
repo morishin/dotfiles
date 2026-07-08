@@ -4,8 +4,10 @@ function load() {
   fi
 }
 
+# work-machine settings from the private dotfiles-work repo (skipped when absent)
+load $HOME/develop/dotfiles-work/zsh/work.zsh
+
 DOT_FILES=(
-  machine-specific.zsh
   env.zsh
   pathes.zsh
   nix.zsh
@@ -13,8 +15,7 @@ DOT_FILES=(
   functions.zsh
   aliases.zsh
   cargo.zsh
-  npm-completion.zsh
-  deno.zsh
+  completions.zsh
   starship.zsh
 )
 
