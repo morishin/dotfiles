@@ -48,12 +48,8 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 zmodload zsh/datetime
 
-# autojump
-if [ $(uname -s) = Darwin ]; then
-  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-else
-  . /usr/share/autojump/autojump.sh
-fi
+# zoxide (keeps autojump's `j` command name)
+eval "$(zoxide init zsh --cmd j)"
 
 # bun completions
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
