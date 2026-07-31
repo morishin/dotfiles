@@ -6,10 +6,6 @@ alias lla='ls -la'
 alias cp='cp -i'
 alias mv='mv -i'
 alias du='du -h'
-# podman
-if (( $+commands[podman] )); then
-  alias docker=podman
-fi
 # mysql
 alias mysql='mysql --pager="less -SiFX"'
 alias psql='PAGER="less -SiFX" psql'
