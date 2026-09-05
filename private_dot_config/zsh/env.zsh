@@ -17,3 +17,4 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export BUN_INSTALL="$HOME/.bun"
 export GPG_TTY=${TTY}
 export CLAUDE_CODE_ENABLE_AUTO_MODE=1
+export HERDR_ENV=1

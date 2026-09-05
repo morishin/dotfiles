@@ -37,11 +37,14 @@
 [submodule]
   recurse = true
 [credential "https://github.com"]
-	helper =
+	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper =
+	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
 # work-machine settings from the private dotfiles-work submodule (ignored when absent)
 [include]
   path = ~/develop/dotfiles/dotfiles-work/git/config.inc
+[credential "https://ghe.ckpd.co"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

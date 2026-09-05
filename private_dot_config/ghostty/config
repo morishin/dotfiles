@@ -53,3 +53,7 @@ background-opacity = 0.9
 # font-family = FiraCode Nerd Font Mono
 # font-family = "Hiragino Maru Gothic ProN"
 # font-feature = -dlig
+
+# https://ghostty.org/docs/config/reference#selection-word-chars
+# Default: \t'"│`|:;,()[]{}<>$
+selection-word-chars = " \t'\"│`|:,()[]{}<>$*/."
